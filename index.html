@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SIR Model - Covid-19</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="Chart.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    </head>
+    <body>
+        
+        <div id="wrapper">
+            <div id="title">
+                <h3>
+                    The SIRD Model for Spread of Disease
+                </h3>
+                <h4>
+                    <a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology">https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology</a>
+                </h4>
+            </div>
+            <div id="inputs"  class="pure-form pure-form-aligned">
+                <div>
+                    <h4>Population paramaters</h4>
+                    <div class="pure-control-group">
+                        <label for="total_pop">Population Total:</label>
+                        <input id="total_pop" type="number" value="1000000", min="10", max="10000000000">
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="infected_pop">Infected @ 0 day :</label>
+                        <input id="infected_pop" type="number" value="10000", min="10", max="10000000000">
+                    </div>
+                </div>
+                <div>
+                    <h4>kinetic parameters</h4>
+                    <div class="pure-control-group">
+                        <label for="infectiosity">Infectiosity :</label>
+                        <input id="infectiosity" type="number" value="0.5", min="0", max="1">
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="ttr">Time to recover :</label>
+                        <input id="ttr" type="number" value="15", min="1", max="100">&nbsp;days
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="tts">Time to symptoms :</label>
+                        <input id="tts" type="number" value="3", min="1", max="100">&nbsp;days
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="symptom_ratio">% w/ symptoms :</label>
+                        <input id="symptom_ratio" type="number" value="20", min="1", max="100">&nbsp;%
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="death_ratio_no">Death Probability w/0 symptoms :</label>
+                        <input id="death_ratio_no" type="number" value="0.1", min="1", max="100">&nbsp;% / sick day
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="death_ratio_yes">Death Probability w symptoms:</label>
+                        <input id="death_ratio_yes" type="number" value="3", min="1", max="100">&nbsp;% / sick day
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="quarantine">Quarantine w/ symptoms:</label>
+                        <input id="quarantine" type="checkbox" checked>
+                    </div>
+                </div>
+                <div>
+                    <h4>Run</h4>
+                    <div class="pure-control-group">
+                        <label for="addData">Simulate 1 day :</label>
+                        <button id="addData" class="pure-button">Simulate</button>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="addData15">Simulate 15 day :</label>
+                        <button id="addData15" class="pure-button">Simulate</button>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="reset">Reset :</label>
+                        <button id="reset" class="pure-button">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <div id="charts">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+        <script src="Chart.min.js"></script>
+        <script src="model.js"></script>
+        <script src="plot.js"></script>
+    </body>
+</html>
